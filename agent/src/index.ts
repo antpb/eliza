@@ -3,6 +3,7 @@ import { SqliteDatabaseAdapter } from "@ai16z/adapter-sqlite";
 import { AutoClientInterface } from "@ai16z/client-auto";
 import { DirectClientInterface } from "@ai16z/client-direct";
 import { DiscordClientInterface } from "@ai16z/client-discord";
+import { BrowserDiscordClientInterface } from "@ai16z/client-browser-discord";
 import { TelegramClientInterface } from "@ai16z/client-telegram";
 import { TwitterClientInterface } from "@ai16z/client-twitter";
 import {
@@ -313,6 +314,10 @@ export async function initializeClients(
 
     if (clientTypes.includes("discord")) {
         clients.push(await DiscordClientInterface.start(runtime));
+    }
+
+    if (clientTypes.includes("discord-browser")) {
+        clients.push(await BrowserDiscordClientInterface.start(runtime));
     }
 
     if (clientTypes.includes("telegram")) {

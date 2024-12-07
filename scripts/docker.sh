@@ -37,6 +37,7 @@ case "$1" in
             "client-auto"
             "client-direct"
             "client-discord"
+            "client-browser-discord"
             "client-telegram"
             "client-twitter"
             "core"

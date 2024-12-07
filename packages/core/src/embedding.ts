@@ -233,7 +233,15 @@ export async function embed(runtime: IAgentRuntime, input: string) {
             process.versions != null &&
             process.versions.node != null;
 
-        if (!isNode) {
+            // check if we're in a next.js environment
+        const isNext =
+            typeof process !== "undefined" &&
+            process.versions != null &&
+            process.versions.next != null;
+        console.log("we have isNode", isNode);
+        console.log("we have isNext", isNext);
+        console.log("process.versions", process.versions);
+        if (!isNode && !isNext) {
             elizaLogger.warn(
                 "Local embedding not supported in browser, falling back to remote embedding"
             );
